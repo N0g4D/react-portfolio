@@ -47,21 +47,46 @@ form {
   margin-bottom: 15px !important;
 }
 
-/* Fix mirato per l'input con id outlined-required */
-#outlined-required {
-  position: relative !important;
-  z-index: 9999 !important;
-  color: #111 !important;
-  caret-color: #111 !important;
+/* Fix input visibility and interactivity inside the contact form */
+.contact-form {
+  /* assicura che il form abbia un contesto di stacking prevedibile */
+  position: relative;
+  z-index: 0;
+}
+
+/* Forza colore e caret sull'input / textarea */
+.contact-form .MuiInputBase-input,
+.contact-form .MuiOutlinedInput-input,
+.contact-form textarea.MuiInputBase-input {
+  color: #626262 !important;
+  caret-color: #626262 !important;
   opacity: 1 !important;
+  position: relative;
+  z-index: 2;              /* input sopra l'outline */
   pointer-events: auto !important;
 }
 
-/* Evita che il fieldset/outlines catturi i click */
-#outlined-required + .MuiOutlinedInput-notchedOutline,
-.MuiInputBase-root > #outlined-required + .MuiOutlinedInput-notchedOutline,
-.MuiOutlinedInput-notchedOutline {
-  pointer-events: none !important;
-  background: transparent !important;
-  z-index: 0 !important;
+/* Metti il root dell'outlined behind the input visivo */
+.contact-form .MuiOutlinedInput-root {
+  position: relative;
+  z-index: 1;
 }
+
+/* Evita che il fieldset catturi i click o copra il testo */
+.contact-form .MuiOutlinedInput-notchedOutline {
+  pointer-events: none !important;
+  z-index: 0;
+  /* se vuoi, riduci eventuale background che potrebbe coprire il testo */
+  background: transparent !important;
+}
+
+/* Labels non devono catturare eventi (se ci sono label posizionate sopra) */
+.contact-form .MuiFormLabel-root {
+  pointer-events: none;
+}
+
+/* Se vuoi una diagnostica rapida, abilita bordi temporanei */
+/*
+.contact-form .MuiOutlinedInput-root { outline: 1px dashed rgba(0,0,0,0.12); }
+.contact-form .MuiInputBase-input { outline: 1px dashed rgba(0,128,0,0.12); }
+*/
