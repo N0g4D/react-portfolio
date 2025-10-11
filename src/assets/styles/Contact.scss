@@ -47,15 +47,24 @@ form {
   margin-bottom: 15px !important;
 }
 
-/* forza l'input sopra l'outline e permette eventi */
-.contact-form .MuiInputBase-input,
-.contact-form .MuiOutlinedInput-input {
-  position: relative; /* necessario per far valere z-index */
+/* 1) Forza posizione e z-index direttamente sull'input */
+.contact-form .MuiOutlinedInput-root .MuiInputBase-input {
+  position: relative !important;
   z-index: 9999 !important;
-  color: #111 !important;     /* assicura visibilità testo */
+  color: #111 !important;
   caret-color: #111 !important;
+  opacity: 1 !important;
 }
 
-.contact-form .MuiOutlinedInput-notchedOutline {
+/* 2) Impedisci al fieldset di intercettare eventi (outline non sopra l'input) */
+.contact-form .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
   pointer-events: none !important;
+  z-index: 0 !important;
+  background: transparent !important;
+}
+
+/* 3) Assicura che la root non finisca sopra l'input (nel caso) */
+.contact-form .MuiOutlinedInput-root {
+  position: relative !important;
+  z-index: 1 !important;
 }
