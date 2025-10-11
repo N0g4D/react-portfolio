@@ -51,7 +51,7 @@ form {
 .contact-form .MuiInputBase-input,
 .contact-form .MuiOutlinedInput-input {
   position: relative; /* necessario per far valere z-index */
-  z-index: 5 !important;
+  z-index: 9999 !important;
   color: #111 !important;     /* assicura visibilità testo */
   caret-color: #111 !important;
 }
