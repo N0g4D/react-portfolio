@@ -46,3 +46,39 @@ form {
   width: 100% !important;
   margin-bottom: 15px !important;
 }
+
+/* Forza colore testo negli input/textarea MUI */
+.contact-form .MuiInputBase-input,
+.contact-form .MuiInputBase-input.MuiOutlinedInput-input,
+.contact-form textarea.MuiInputBase-input {
+  color: #111 !important;
+  opacity: 1 !important;
+  caret-color: #111 !important;
+  z-index: 2;
+  position: relative;
+  pointer-events: auto !important;
+}
+
+/* Assicura che la root non nasconda l'input */
+.contact-form .MuiOutlinedInput-root {
+  z-index: 1;
+  position: relative;
+}
+
+/* Se il fieldset dell'outline è sopra l'input, lascia passare i click */
+.contact-form .MuiOutlinedInput-notchedOutline {
+  pointer-events: none !important;
+  z-index: 0;
+}
+
+/* Se labels custom o globali sovrappongono gli input, evita che catturino i click */
+.contact-form label {
+  pointer-events: none;
+}
+
+/* Debug rapido: bordi visibili per vedere i layer (rimuovere dopo) */
+.contact-form .MuiOutlinedInput-root,
+.contact-form .MuiInputBase-input,
+.contact-form .MuiOutlinedInput-notchedOutline {
+  /* border: 1px dashed rgba(255,0,0,0.3); */
+}
