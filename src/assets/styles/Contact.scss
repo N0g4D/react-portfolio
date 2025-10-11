@@ -47,24 +47,21 @@ form {
   margin-bottom: 15px !important;
 }
 
-/* 1) Forza posizione e z-index direttamente sull'input */
-.contact-form .MuiOutlinedInput-root .MuiInputBase-input {
+/* Fix mirato per l'input con id outlined-required */
+#outlined-required {
   position: relative !important;
   z-index: 9999 !important;
   color: #111 !important;
   caret-color: #111 !important;
   opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
-/* 2) Impedisci al fieldset di intercettare eventi (outline non sopra l'input) */
-.contact-form .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+/* Evita che il fieldset/outlines catturi i click */
+#outlined-required + .MuiOutlinedInput-notchedOutline,
+.MuiInputBase-root > #outlined-required + .MuiOutlinedInput-notchedOutline,
+.MuiOutlinedInput-notchedOutline {
   pointer-events: none !important;
-  z-index: 0 !important;
   background: transparent !important;
-}
-
-/* 3) Assicura che la root non finisca sopra l'input (nel caso) */
-.contact-form .MuiOutlinedInput-root {
-  position: relative !important;
-  z-index: 1 !important;
+  z-index: 0 !important;
 }
