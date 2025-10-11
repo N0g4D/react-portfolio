@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://n0g4d.github.io/react-portfolio",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",

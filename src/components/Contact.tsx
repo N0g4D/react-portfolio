@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
 
@@ -18,12 +19,50 @@ function Contact() {
 
   const form = useRef();
 
+  const sendEmail = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    // validazione base
+    setNameError(name.trim() === '');
+    setEmailError(email.trim() === '');
+    setMessageError(message.trim() === '');
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      console.log('validation failed', { name, email, message });
+      return;
+    }
+
+    console.log('sendEmail called', { name, email, message });
+
+    const templateParams = {
+      from_name: name,
+      reply_to: email,
+      message: message,
+    };
+
+    try {
+      // sostituisci service_id, template_id, user_id con i tuoi valori EmailJS
+      const result = await emailjs.send('service_jr7ygjv', 'template_e6r14vl', templateParams, 'pibLBwcUu-56Inz6d');
+      console.log('EmailJS success', result);
+      // pulizia campi dopo invio riuscito
+      setName('');
+      setEmail('');
+      setMessage('');
+      setNameError(false);
+      setEmailError(false);
+      setMessageError(false);
+    } catch (err) {
+      console.error('EmailJS error', err);
+    }
+  };
+
+  /*
   const sendEmail = (e: any) => {
     e.preventDefault();
 
     setNameError(name === '');
     setEmailError(email === '');
-    setMessageError(message === '');
+    setMessageError(message === ''); */
 
     /* Uncomment below if you want to enable the emailJS */
 
@@ -47,7 +86,8 @@ function Contact() {
     //   setEmail('');
     //   setMessage('');
     // }
-  };
+  //};
+
 
   return (
     <div id="contact">
