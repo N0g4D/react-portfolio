@@ -55,3 +55,7 @@ form {
   color: #111 !important;     /* assicura visibilità testo */
   caret-color: #111 !important;
 }
+
+.contact-form .MuiOutlinedInput-notchedOutline {
+  pointer-events: none !important;
+}
