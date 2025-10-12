@@ -49,7 +49,7 @@ function Expertise({ isDarkMode }: { isDarkMode: boolean }) {
                     <PowerIcon isDarkMode={isDarkMode} />
                     <h3>Power Platform Architect</h3>
                     <p>                   
-                    I specialize in building applications with Power Apps and Power Automate, leveraging SharePoint and Dataverse for data management while using Azure DevOps for efficient development workflows. I create Power BI reports, seamlessly integrating them with apps or migrating from QlikView.
+                    I specialize in building applications with Power Apps, Power Pages and Power Automate, leveraging Dataverse and SharePoint for data management while using Azure DevOps for efficient development workflows. I create Power BI reports, seamlessly integrating them with apps or migrating from QlikView.
                     </p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
